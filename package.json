@@ -1,20 +1,21 @@
 {
-	"name": "proxy",
-	"version": "1.0.0",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "bun run index.js",
-		"dev": "nodemon index.js"
-	},
-	"author": "duongnguyen321",
-	"license": "ISC",
-	"description": "Proxy server",
-	"dependencies": {
-		"body-parser": "^1.20.2",
-		"cheerio": "^1.0.0-rc.12",
-		"cors": "^2.8.5",
-		"express": "^4.19.2",
-		"node-fetch": "^3.3.2"
-	}
+  "name": "proxy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "bun run index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "duongnguyen321",
+  "license": "ISC",
+  "description": "Proxy server",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2"
+  }
 }

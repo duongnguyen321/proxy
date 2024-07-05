@@ -3,8 +3,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const cheerio = require('cheerio');
 const path = require('path');
+require('dotenv').config();
 const app = express();
-const PORT = 20045;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -65,6 +66,9 @@ app.all('*', async (req, res) => {
 		if (!domain.startsWith('http://') && !domain.startsWith('https://')) {
 			domain = 'http://' + domain;
 		}
+		if (Object.keys(req?.query).length) {
+			domain = domain + '?' + new URLSearchParams(req.query).toString();
+		}
 		const requestedUrl = new URL(domain);
 		if (requestedUrl.hostname === 'favicon.ico') {
 			return res.status(204).end();
@@ -123,5 +127,5 @@ app.all('*', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-	console.log(`Proxy server running on port ${PORT}`);
+	console.info(`Proxy server running on port ${PORT}`);
 });
