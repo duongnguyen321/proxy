@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<meta
+			name="description"
+			content="Xin chào, đây là trang proxy của Dương."
+		/>
+
+		<!-- Facebook Meta Tags -->
+		<meta property="og:url" content="https://proxy.ndng.net" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Proxy server" />
+		<meta
+			property="og:description"
+			content="Xin chào, đây là trang proxy của Dương."
+		/>
+		<meta property="og:image" content="https://ndng.net/duong.jpg" />
+
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta property="twitter:domain" content="proxy.ndng.net" />
+		<meta property="twitter:url" content="https://proxy.ndng.net" />
+		<meta name="twitter:title" content="Proxy server" />
+		<meta
+			name="twitter:description"
+			content="Xin chào, đây là trang proxy của Dương."
+		/>
+		<meta name="twitter:image" content="https://ndng.net/duong.jpg" />
+
+		<title>Xin chào, đây là trang proxy của Dương</title>
+		<style>
+			body {
+				font-family: sans-serif;
+				text-align: center;
+				padding: 20px;
+			}
+			.container {
+				background-color: #e9ecef;
+				padding: 40px;
+				border-radius: 8px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Proxy Server</h1>
+			<p>Enter a website or API URL below to use the proxy:</p>
+			<form
+				onsubmit="event.preventDefault();w=window.location;w.href=w.origin+'/'+this.u.value"
+			>
+				<input
+					type="text"
+					name="u"
+					placeholder="ndng.net/api/info/names"
+					required
+				/>
+			</form>
+		</div>
+	</body>
+</html>

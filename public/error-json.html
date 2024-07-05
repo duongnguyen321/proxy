@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="JSON Error - Dương's Proxy could not process the JSON response."
+		/>
+
+		<meta property="og:url" content="https://proxy.ndng.net" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="JSON Error" />
+		<meta
+			property="og:description"
+			content="JSON Error - Dương's Proxy could not process the JSON response."
+		/>
+		<meta property="og:image" content="https://ndng.net/duong.jpg" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta property="twitter:domain" content="proxy.ndng.net" />
+		<meta property="twitter:url" content="https://proxy.ndng.net" />
+		<meta name="twitter:title" content="JSON Error" />
+		<meta
+			name="twitter:description"
+			content="JSON Error - Dương's Proxy could not process the JSON response."
+		/>
+		<meta name="twitter:image" content="https://ndng.net/duong.jpg" />
+
+		<title>JSON Error</title>
+
+		<style>
+			body {
+				font-family: monospace;
+				text-align: left;
+				padding: 20px;
+			}
+			.container {
+				background-color: #f0f0f0;
+				padding: 20px;
+				border-radius: 8px;
+			}
+			pre {
+				white-space: pre-wrap;
+				overflow: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>JSON Parsing Error</h1>
+			<p>The server returned invalid JSON data.</p>
+			<p>Please check the API response or contact the server administrator.</p>
+
+			<details>
+				<summary>Error Details (for developers)</summary>
+				<pre id="error-details"></pre>
+			</details>
+
+			<script>
+				const errorDetails = JSON.parse(
+					localStorage.getItem('proxyErrorDetails')
+				);
+				document.getElementById('error-details').textContent = JSON.stringify(
+					errorDetails,
+					null,
+					2
+				);
+			</script>
+		</div>
+	</body>
+</html>
