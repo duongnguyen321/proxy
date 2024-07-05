@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const cheerio = require('cheerio');
-const path = require('path');
 require('dotenv').config();
+const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
