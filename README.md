@@ -22,3 +22,13 @@ Have a query: `?disable=`
 - **img|image** => disable images in web
 
 AND of course, it can multiple disable like: `?disable=js|css|img`
+
+If you want to set the **RESPONSE** headers, then you can use like:
+`?headers=x-total-count:0&headers=x-limit:0`
+
+It must be:
+
+```bash
+X-Total-Count=0
+X-Limit=0
+```
