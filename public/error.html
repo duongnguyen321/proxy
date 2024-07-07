@@ -42,6 +42,27 @@
 			h1 {
 				color: #dc3545;
 			}
+			.VIEWS {
+				margin-top: 20px;
+				font-size: 16px;
+				line-height: 1.5;
+				color: #111;
+				margin-bottom: 20px;
+				padding: 0;
+				margin: 0;
+				text-align: left;
+			}
+			pre {
+				white-space: pre-wrap;
+				overflow: auto;
+				font-size: 14px;
+				line-height: 1.5;
+				color: #333;
+				background-color: #f5f5f5;
+				border-radius: 8px;
+				padding: 10px;
+				margin-bottom: 20px;
+			}
 		</style>
 	</head>
 	<body>
@@ -51,6 +72,41 @@
 			<p>Please check the URL or try again later.</p>
 			<button onclick="window.location.href='/'">Go Back</button>
 		</div>
+
+		<div class="VIEWS">
+			<h1>Proxy server</h1>
+			<p>
+				It used to call any thing with method: GET/POST/PUT/PATCH/DELETE,....
+			</p>
+			<p>Without cors.</p>
+			<p>Can use by:</p>
+			<pre>
+<code class="language-bash">curl https://proxy.ndng.net/{YOUR_URL_PAGE_OR_API}
+<span class="hljs-comment"># https://proxy.ndng.net/ndng.net THIS IS HTML RETURNED</span>
+<span class="hljs-comment"># https://proxy.ndng.net/ndng.net/api THIS IS JSON RETURNED</span>
+</code>
+</pre>
+			<p>Of course, it can use in browser.</p>
+			<p>Have a query: <code>?disable=</code></p>
+			<ul>
+				<li><strong>js|javascript</strong> =&gt; disable js in web</li>
+				<li><strong>css|style</strong> =&gt; disable styling in web</li>
+				<li><strong>img|image</strong> =&gt; disable images in web</li>
+			</ul>
+			<p>
+				AND of course, it can multiple disable like:
+				<code>?disable=js|css|img</code>
+			</p>
+			<p>
+				If you want to set the <strong>RESPONSE</strong> headers, then you can
+				use like: <code>?headers=x-total-count:0&amp;headers=x-limit:0</code>
+			</p>
+			<p>It must be:</p>
+			<pre><code class="language-bash">X-Total-Count=0
+X-Limit=0
+</code></pre>
+		</div>
+
 		<p class="copy">
 			&copy; Welcome to <a href="//ndng.net" target="_blank">ndng.net</a>, you
 			can find more in <a href="//github.com/duongnguyen321">my github</a>
