@@ -79,6 +79,36 @@
 				padding: 10px;
 				margin-bottom: 20px;
 			}
+			.options {
+				text-align: left;
+				margin-top: 20px;
+				display: flex;
+				justify-content: center;
+			}
+			.option-label {
+				display: block;
+				margin-bottom: 5px;
+			}
+			.option-choose {
+				margin-left: 10px;
+			}
+			.option-choose input {
+				width: 10px;
+			}
+			.header-input {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 10px;
+			}
+			.header-input label {
+				width: 80px;
+			}
+			.header-input input {
+				flex: 1;
+				margin-left: 10px;
+				max-width: 300px;
+			}
 		</style>
 	</head>
 	<body>
@@ -98,15 +128,28 @@
 		<div class="container">
 			<h1>Proxy Server</h1>
 			<p>Enter a website or API URL below to use the proxy:</p>
-			<form
-				onsubmit="event.preventDefault();w=window.location;w.href=w.origin+'/'+this.u.value"
-			>
-				<input
-					type="text"
-					name="u"
-					placeholder="ndng.net/api/info/names"
-					required
-				/>
+			<form id="proxyForm">
+				<input type="text" name="url" placeholder="ndng.net/api" required />
+
+				<div class="options">
+					<label class="option-label">Disable:</label>
+					<label class="option-choose">
+						<input type="checkbox" name="disable" value="js" />
+						JavaScript
+					</label>
+					<label class="option-choose">
+						<input type="checkbox" name="disable" value="css" /> CSS
+					</label>
+					<label class="option-choose">
+						<input type="checkbox" name="disable" value="img" /> Images
+					</label>
+				</div>
+
+				<div id="headersContainer">
+					<button type="button" onclick="addHeaderInput()">Add Header</button>
+				</div>
+
+				<button type="submit">Go</button>
 			</form>
 		</div>
 
@@ -129,6 +172,7 @@
 				<li><strong>js|javascript</strong> =&gt; disable js in web</li>
 				<li><strong>css|style</strong> =&gt; disable styling in web</li>
 				<li><strong>img|image</strong> =&gt; disable images in web</li>
+				<li><strong>svg</strong> =&gt; disable svg in web</li>
 			</ul>
 			<p>
 				AND of course, it can multiple disable like:
@@ -143,6 +187,48 @@
 X-Limit=0
 </code></pre>
 		</div>
+		<script>
+			function addHeaderInput() {
+				const container = document.getElementById('headersContainer');
+				const newInput = document.createElement('div');
+				newInput.classList.add('header-input');
+				newInput.innerHTML = `
+                <label for="headerKey">Key:</label>
+                <input type="text" name="headerKey" id="headerKey">
+                <label for="headerValue">Value:</label>
+                <input type="text" name="headerValue" id="headerValue">
+            `;
+				container.appendChild(newInput);
+			}
+			document
+				.getElementById('proxyForm')
+				.addEventListener('submit', (event) => {
+					event.preventDefault();
+					const url = document.querySelector("input[name='url']").value;
+					const disableOptions = Array.from(
+						document.querySelectorAll("input[name='disable']:checked")
+					).map((el) => el.value);
+					const headers = [];
+					document.querySelectorAll('.header-input').forEach((el) => {
+						const key = el.querySelector("input[name='headerKey']").value;
+						const value = el.querySelector("input[name='headerValue']").value;
+						if (key && value) {
+							headers.push(`${key}:${value}`);
+						}
+					});
+
+					const queryParams = new URLSearchParams();
+					if (disableOptions.length > 0) {
+						queryParams.append('disable', disableOptions.join('|'));
+					}
+					headers.forEach((header) => {
+						queryParams.append('headers', header);
+					});
+
+					window.location.href =
+						window.location.origin + '/' + url + '?' + queryParams.toString();
+				});
+		</script>
 
 		<span class="copy">
 			&copy; Welcome to <a href="//ndng.net" target="_blank">ndng.net</a>, you

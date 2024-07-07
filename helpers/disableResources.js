@@ -15,6 +15,10 @@ function disableResources(htmlContent, disableOptions) {
 	if (disableOptions.includes('img') || disableOptions.includes('image')) {
 		$('img').remove();
 	}
+
+	if (disableOptions.includes('svg')) {
+		$('svg').remove();
+	}
 	$('body').append(`<noscript>
 			<iframe
 				src="https://www.googletagmanager.com/ns.html?id=GTM-KBHW372M"

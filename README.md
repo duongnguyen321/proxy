@@ -20,6 +20,7 @@ Have a query: `?disable=`
 - **js|javascript** => disable js in web
 - **css|style** => disable styling in web
 - **img|image** => disable images in web
+- **svg** => disable svg in web
 
 AND of course, it can multiple disable like: `?disable=js|css|img`
 
