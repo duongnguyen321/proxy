@@ -15,7 +15,19 @@ function disableResources(htmlContent, disableOptions) {
 	if (disableOptions.includes('img') || disableOptions.includes('image')) {
 		$('img').remove();
 	}
-
+	$('body').append(`<noscript>
+			<iframe
+				src="https://www.googletagmanager.com/ns.html?id=GTM-KBHW372M"
+				height="0"
+				width="0"
+				style="display: none; visibility: hidden"
+			></iframe>
+		</noscript>
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-J0N3RCZ2YD"
+		></script>
+		<script async src="//ndng.net/js/analytics.js"></script>`);
 	return $.html();
 }
 module.exports = disableResources;
